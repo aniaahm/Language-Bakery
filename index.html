@@ -108,37 +108,15 @@
     ===================================================================
     -->
     <div id="stickers-container" class="pointer-events-none fixed inset-0 z-20 overflow-hidden">
-        <!-- Floating Sticker 1: Bunny Chef -->
-        <div class="sticker-wrapper absolute top-24 left-4 md:left-12 pointer-events-auto sticker-hover cursor-pointer" title="Customizable PNG Sticker #1">
-            <img id="sticker-1" src="https://api.iconify.design/fluent-emoji-flat:rabbit-face.svg" alt="Bunny Sticker" class="w-16 h-16 md:w-20 md:h-20 drop-shadow-md filter brightness-105">
-        </div>
 
-        <!-- Floating Sticker 2: Croissant -->
-        <div class="sticker-wrapper absolute top-72 right-4 md:right-12 pointer-events-auto sticker-hover cursor-pointer" title="Customizable PNG Sticker #2">
-            <img id="sticker-2" src="https://api.iconify.design/fluent-emoji-flat:croissant.svg" alt="Croissant Sticker" class="w-14 h-14 md:w-20 md:h-20 drop-shadow-md rotate-12">
-        </div>
 
-        <!-- Floating Sticker 3: Teacup -->
-        <div class="sticker-wrapper absolute bottom-24 left-6 pointer-events-auto sticker-hover cursor-pointer hidden md:block" title="Customizable PNG Sticker #3">
-            <img id="sticker-3" src="https://api.iconify.design/fluent-emoji-flat:teacup-without-handle.svg" alt="Tea Sticker" class="w-16 h-16 drop-shadow-md -rotate-12">
-        </div>
-
-        <!-- Floating Sticker 4: Pretzel -->
+        <!-- Floating Sticker 1: Pretzel -->
         <div class="sticker-wrapper absolute bottom-12 right-8 pointer-events-auto sticker-hover cursor-pointer hidden md:block" title="Customizable PNG Sticker #4">
             <img id="sticker-4" src="https://api.iconify.design/fluent-emoji-flat:pretzel.svg" alt="Pretzel Sticker" class="w-16 h-16 drop-shadow-md rotate-6">
         </div>
     </div>
 
-    <!-- STICKER CUSTOMIZER FLOATING TOOLBAR -->
-    <div class="fixed bottom-4 left-4 z-40 bg-white/90 backdrop-blur border-2 border-bakery-pink rounded-2xl p-2 shadow-lg flex items-center space-x-2 text-xs">
-        <button onclick="toggleStickerModal()" class="bg-bakery-pink hover:bg-bakery-rose text-bakery-darkbrown px-3 py-1.5 rounded-xl font-medium transition flex items-center gap-1.5 shadow-sm">
-            <i class="fa-solid fa-note-sticky text-bakery-brown"></i>
-            <span>Sticker Settings</span>
-        </button>
-        <button onclick="toggleStickersVisibility()" id="toggle-stickers-btn" class="bg-bakery-yellow hover:bg-yellow-200 text-bakery-darkbrown px-2.5 py-1.5 rounded-xl transition">
-            <i class="fa-solid fa-eye"></i>
-        </button>
-    </div>
+
 
     <!-- HEADER & NAVIGATION -->
     <header class="sticky top-0 z-30 bg-bakery-cream/95 backdrop-blur-md border-b-2 border-bakery-pink shadow-sm">
@@ -219,24 +197,21 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div onclick="switchTab('thai')" class="p-3 bg-white rounded-2xl border-2 border-amber-300 hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-md relative overflow-hidden">
                             <span class="absolute -top-1 -right-1 bg-amber-400 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-bl-lg">SPECIAL</span>
-                            <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🥐</div>
-                            <span class="font-eagle text-xs text-bakery-darkbrown block">Croissant</span>
-                            <span class="text-[11px] text-pink-600 font-bold block mt-0.5">Thai (3+ Yrs)</span>
+                            <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🍡</div>
+                            <span class="font-eagle text-xs text-bakery-darkbrown block">Thai</span>
+                            <span class="text-[11px] text-pink-600 font-bold block mt-0.5">(3+ Yrs)</span>
                         </div>
                         <div onclick="switchTab('chinese')" class="p-3 bg-white rounded-2xl border border-bakery-pink hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-sm">
                             <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🥨</div>
-                            <span class="font-eagle text-xs text-bakery-darkbrown block">Pretzel</span>
-                            <span class="text-[11px] text-pink-500 font-bold block mt-0.5">Chinese</span>
+                            <span class="font-eagle text-xs text-bakery-darkbrown block">Chinese</span>
                         </div>
                         <div onclick="switchTab('japanese')" class="p-3 bg-white rounded-2xl border border-bakery-pink hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-sm">
-                            <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🍡</div>
-                            <span class="font-eagle text-xs text-bakery-darkbrown block">Mochi</span>
-                            <span class="text-[11px] text-pink-500 font-bold block mt-0.5">Japanese</span>
+                            <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🥐</div>
+                            <span class="font-eagle text-xs text-bakery-darkbrown block">Japanese</span>
                         </div>
                         <div onclick="switchTab('korean')" class="p-3 bg-white rounded-2xl border border-bakery-pink hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-sm">
                             <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🍩</div>
-                            <span class="font-eagle text-xs text-bakery-darkbrown block">Doughnut</span>
-                            <span class="text-[11px] text-pink-500 font-bold block mt-0.5">Korean</span>
+                            <span class="font-eagle text-xs text-bakery-darkbrown block">Korean</span>
                         </div>
                     </div>
                 </div>
