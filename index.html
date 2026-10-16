@@ -52,12 +52,6 @@
             background-position: 0 0, 30px 30px;
         }
 
-        .scallop-border {
-            background: radial-gradient(circle at 10px -5px, transparent 12px, #f7d7e7 13px);
-            background-size: 20px 20px;
-            background-repeat: repeat-x;
-        }
-
         .cloud-card {
             border-radius: 2.5rem;
             box-shadow: 0 10px 25px -5px rgba(209, 166, 120, 0.15), 0 8px 10px -6px rgba(247, 215, 231, 0.3);
@@ -168,8 +162,9 @@
                 <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 bg-bakery-pink text-bakery-darkbrown shadow-sm">
                     Home
                 </button>
-                <button onclick="switchTab('thai')" id="nav-thai" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
-                    🇹🇭 Thai
+                <button onclick="switchTab('thai')" id="nav-thai" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown flex items-center gap-1">
+                    <span>🇹🇭 Thai</span>
+                    <span class="bg-amber-100 text-amber-800 text-[9px] px-1.5 py-0.2 rounded-full border border-amber-300 font-bold">3+ Yrs</span>
                 </button>
                 <button onclick="switchTab('chinese')" id="nav-chinese" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
                     🇨🇳 Chinese
@@ -183,8 +178,8 @@
                 <button onclick="switchTab('tagalog')" id="nav-tagalog" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
                     🇵🇭 Tagalog
                 </button>
-                <button onclick="switchTab('guides')" id="nav-guides" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
-                    📖 Guides & Notes
+                <button onclick="switchTab('rules')" id="nav-rules" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
+                    📖 Rules, Schedules & Videos
                 </button>
             </nav>
         </div>
@@ -202,8 +197,10 @@
                 <div class="absolute -top-10 -left-10 w-32 h-32 bg-bakery-yellow/40 rounded-full blur-xl pointer-events-none"></div>
                 <div class="absolute -bottom-10 -right-10 w-36 h-36 bg-bakery-blue/40 rounded-full blur-xl pointer-events-none"></div>
 
-                <div class="inline-block px-4 py-1 bg-bakery-yellow text-bakery-darkbrown font-grace text-lg rounded-full mb-3 shadow-sm border border-yellow-200">
-                    Welcome to our cozy study café! ☕🍰
+                <!-- SPECIAL THAI FOCUS BANNER -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-amber-100 via-bakery-yellow to-pink-100 text-bakery-darkbrown font-semibold text-xs rounded-full mb-4 shadow-sm border-2 border-amber-200">
+                    <span class="text-base">🇹🇭👑</span>
+                    <span><strong>3+ Years Dedicated Thai Focus:</strong> Deep Resource Vault & Video Masterclasses Inside!</span>
                 </div>
 
                 <h2 class="font-serif text-4xl md:text-5xl text-bakery-darkbrown mb-4">
@@ -211,7 +208,7 @@
                 </h2>
 
                 <p class="max-w-2xl mx-auto text-bakery-darkbrown/80 leading-relaxed text-base md:text-lg mb-8 font-sans">
-                    A sweet, joyful space created for friends to bake multilingual skills! Explore curated vocabulary recipes, study notes, downloadable guides, and essential tools for <span class="font-semibold text-bakery-brown">Thai, Chinese, Japanese, Korean,</span> and <span class="font-semibold text-bakery-brown">Tagalog</span>.
+                    Welcome to my cozy bakery! Over the past <span class="font-bold text-amber-900 underline decoration-amber-300 decoration-2">3 years</span>, I have dedicated myself intensively to mastering <span class="font-bold text-pink-600">Thai</span>, building a huge vault of worksheets, videos, and tone guides — while also sharing notes for Chinese, Japanese, Korean, and Tagalog!
                 </p>
 
                 <!-- Interactive Menu Items Grid (Inspired by Aesthetic Menu Reference) -->
@@ -220,10 +217,11 @@
                     <div class="font-grace text-sm text-bakery-brown mb-6">Select a sweet language treat below</div>
 
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div onclick="switchTab('thai')" class="p-3 bg-white rounded-2xl border border-bakery-pink hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-sm">
+                        <div onclick="switchTab('thai')" class="p-3 bg-white rounded-2xl border-2 border-amber-300 hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-md relative overflow-hidden">
+                            <span class="absolute -top-1 -right-1 bg-amber-400 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-bl-lg">SPECIAL</span>
                             <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🥐</div>
                             <span class="font-eagle text-xs text-bakery-darkbrown block">Croissant</span>
-                            <span class="text-[11px] text-pink-500 font-bold block mt-0.5">Thai</span>
+                            <span class="text-[11px] text-pink-600 font-bold block mt-0.5">Thai (3+ Yrs)</span>
                         </div>
                         <div onclick="switchTab('chinese')" class="p-3 bg-white rounded-2xl border border-bakery-pink hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-sm">
                             <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🥨</div>
@@ -251,7 +249,7 @@
                         <div class="text-left flex-1">
                             <span class="bg-bakery-pink text-bakery-darkbrown text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Special Gift 🎁</span>
                             <h3 class="font-serif text-2xl text-bakery-darkbrown mt-2">Notebook Layout Plan</h3>
-                            <p class="text-xs text-bakery-darkbrown/70 mt-1">Tap to claim your master multi-language comparative cheat sheet!</p>
+                            <p class="text-xs text-bakery-darkbrown/70 mt-1">Tap to view your multi-language comparative cheat sheet!</p>
                         </div>
                         <button class="bg-bakery-darkbrown hover:bg-bakery-brown text-white font-medium text-xs px-5 py-3 rounded-2xl transition shadow-md whitespace-nowrap flex items-center gap-2">
                             <span>Open Voucher</span>
@@ -261,22 +259,22 @@
                 </div>
             </div>
 
-            <!-- Quick Features Highlights -->
+            <!-- REVISED HOMEPAGE SUMMARY CARDS (BASED ON YOUR FEEDBACK) -->
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="cloud-card bg-bakery-blue/30 p-6">
-                    <div class="text-3xl mb-3">📚</div>
-                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-2">Notebook Design</h4>
+                <div class="cloud-card bg-bakery-blue/30 p-6 text-center">
+                    <div class="text-3xl mb-2">📚</div>
+                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-2">Notebook Layout</h4>
                     <p class="text-sm text-bakery-darkbrown/75">Organized vocabulary structured like handwritten notebook pages with English, Romanization & Scripts.</p>
                 </div>
-                <div class="cloud-card bg-bakery-pink/30 p-6">
-                    <div class="text-3xl mb-3">📲</div>
+                <div class="cloud-card bg-bakery-pink/30 p-6 text-center">
+                    <div class="text-3xl mb-2">📲</div>
                     <h4 class="font-serif text-xl text-bakery-darkbrown mb-2">Curated Resources</h4>
-                    <p class="text-sm text-bakery-darkbrown/75">Direct links to top apps (Anki, HelloTalk, LingoDeer), dictionary tools, and study guide downloads.</p>
+                    <p class="text-sm text-bakery-darkbrown/75">Direct links to top language apps (Anki, HelloTalk, LingoDeer), dictionary tools, and study portals.</p>
                 </div>
-                <div class="cloud-card bg-bakery-yellow/40 p-6">
-                    <div class="text-3xl mb-3">🥖</div>
-                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-2">Bite-Sized Guides</h4>
-                    <p class="text-sm text-bakery-darkbrown/75">Easy rules on Thai tones, Hangul creation, Chinese character basics, and daily study schedules.</p>
+                <div class="cloud-card bg-bakery-yellow/40 p-6 text-center">
+                    <div class="text-3xl mb-2">📑</div>
+                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-2">Printable Study Sheets</h4>
+                    <p class="text-sm text-bakery-darkbrown/75">Download full Worksheets: Alphabets, Opposite Verbs & Adjectives, 50 Common Nouns, Ordering Food & more!</p>
                 </div>
             </div>
 
@@ -284,7 +282,6 @@
 
 
         <!-- ================= DYNAMIC LANGUAGE TEMPLATE SECTION ================= -->
-        <!-- This container dynamically renders sub-page views for Thai, Chinese, Japanese, Korean, Tagalog -->
         <section id="tab-language-container" class="tab-content hidden space-y-8">
             
             <!-- Dynamic Header Card -->
@@ -320,18 +317,18 @@
             <div class="cloud-card bg-bakery-cream p-6 md:p-8 space-y-8 border-2 border-bakery-pink">
                 <div class="border-b-2 border-bakery-pink/50 pb-4">
                     <h3 class="font-serif text-3xl text-bakery-darkbrown flex items-center gap-3">
-                        <span>🧁</span> Resource Hub & Study Bakery
+                        <span>🧁</span> Resource Hub & Printable Study Sheets
                     </h3>
-                    <p class="text-xs text-bakery-brown mt-1">Download cheat sheets, browse curated apps, and open study previews.</p>
+                    <p class="text-xs text-bakery-brown mt-1">Download complete study workbooks, browse curated apps, and open study previews.</p>
                 </div>
 
-                <!-- Downloadable PDFs & Cheat Sheets -->
+                <!-- Downloadable Study Worksheets Grid (Full Customization matching Image 3 & 4) -->
                 <div>
-                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-file-pdf text-red-400"></i> Downloadable Study PDFs
+                    <h4 class="font-serif text-2xl text-bakery-darkbrown mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-file-pdf text-red-500"></i> Downloadable Study Worksheets
                     </h4>
-                    <div id="pdf-list-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        <!-- Populated dynamically -->
+                    <div id="pdf-list-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <!-- Populated dynamically with realistic worksheet cards -->
                     </div>
                 </div>
 
@@ -359,19 +356,19 @@
         </section>
 
 
-        <!-- ================= GUIDES & NOTES SECTION ================= -->
-        <section id="tab-guides" class="tab-content hidden space-y-8">
+        <!-- ================= RULES, SCHEDULES & VIDEOS SECTION ================= -->
+        <section id="tab-rules" class="tab-content hidden space-y-8">
             
-            <div class="cloud-card bg-white p-8 border-2 border-bakery-pink text-center">
-                <span class="text-3xl">📖</span>
-                <h2 class="font-serif text-4xl text-bakery-darkbrown mt-2">Guides & Study Notes</h2>
-                <p class="text-sm text-bakery-brown max-w-lg mx-auto mt-1">Essays, rules, and study guides across our five bakery languages.</p>
+            <div class="cloud-card bg-white p-8 border-2 border-bakery-pink text-center relative overflow-hidden">
+                <span class="text-4xl">📖🎬</span>
+                <h2 class="font-serif text-4xl text-bakery-darkbrown mt-2">Rules, Schedules & Videos</h2>
+                <p class="text-sm text-bakery-brown max-w-lg mx-auto mt-1">Master Thai Tones with embedded video masterclasses, recommended study schedules, and learning adventure rules!</p>
             </div>
 
-            <!-- Guides Accordion List -->
+            <!-- Rules & Videos Accordion List -->
             <div class="space-y-4">
-                
-                <!-- Rule 1 -->
+
+                <!-- Accordion 1: Learning Adventure Rules -->
                 <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g1')">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -386,29 +383,43 @@
                         <p>🍵 <strong>Rule #3: Speak Out Loud.</strong> Say every word out loud as if ordering at a cute bakery counter.</p>
                     </div>
                 </div>
-
-                <!-- Rule 2 -->
+                
+                <!-- Accordion 2: Tone Masterclass YouTube Videos -->
                 <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g2')">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
-                            <span class="w-8 h-8 rounded-full bg-bakery-yellow flex items-center justify-center text-xs font-bold text-bakery-darkbrown">2</span>
-                            <h3 class="font-serif text-xl text-bakery-darkbrown">Tips for Mastering Tones in Thai</h3>
+                            <span class="w-8 h-8 rounded-full bg-amber-200 flex items-center justify-center text-xs font-bold text-bakery-darkbrown">2</span>
+                            <h3 class="font-serif text-xl text-bakery-darkbrown">Tips & YouTube Videos for Mastering Tones in Thai 🇹🇭</h3>
                         </div>
                         <i id="g2-icon" class="fa-solid fa-chevron-down text-bakery-brown transition-transform"></i>
                     </div>
-                    <div id="g2-body" class="hidden mt-4 pt-4 border-t border-bakery-pink/30 text-sm text-bakery-darkbrown/80 space-y-2 font-sans">
-                        <p>Thai has 5 tones: Mid, Low, Falling, High, and Rising.</p>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li><strong>Mid Tone:</strong> Flat relaxed voice.</li>
-                            <li><strong>Low Tone:</strong> Lower pitched, like asking a serious question softly.</li>
-                            <li><strong>Falling Tone:</strong> High pitch dropping fast (like saying "Oh!").</li>
-                            <li><strong>High Tone:</strong> High pitched voice, slightly surprised pitch.</li>
-                            <li><strong>Rising Tone:</strong> Starts low and rises up (like asking "What?").</li>
-                        </ul>
+                    <div id="g2-body" class="hidden mt-4 pt-4 border-t border-bakery-pink/30 text-sm text-bakery-darkbrown/80 space-y-4 font-sans">
+                        <p class="text-xs text-bakery-brown">Watch these hand-picked YouTube video lessons to master Thai tones, consonant classes, and pronunciation!</p>
+                        
+                        <!-- Embedded Video Grid -->
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <!-- Video 1 -->
+                            <div class="bg-bakery-cream p-3 rounded-2xl border border-bakery-pink space-y-2">
+                                <div class="aspect-video w-full rounded-xl overflow-hidden shadow-sm">
+                                    <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/5DUB4s2Yp9Y" title="Thai Tones Lesson" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <h4 class="font-serif font-bold text-sm text-bakery-darkbrown">Thai 5 Tones Pronunciation Drills</h4>
+                                <p class="text-[11px] text-bakery-brown">Clear audio breakdown for Mid, Low, Falling, High, and Rising tones.</p>
+                            </div>
+
+                            <!-- Video 2 -->
+                            <div class="bg-bakery-cream p-3 rounded-2xl border border-bakery-pink space-y-2">
+                                <div class="aspect-video w-full rounded-xl overflow-hidden shadow-sm">
+                                    <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/g8fH5-C7b9g" title="Thai Consonant Classes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <h4 class="font-serif font-bold text-sm text-bakery-darkbrown">High, Mid & Low Consonant Rules</h4>
+                                <p class="text-[11px] text-bakery-brown">Understanding how initial consonants determine tone rules!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Rule 3 -->
+                <!-- Accordion 3 -->
                 <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g3')">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -423,7 +434,7 @@
                     </div>
                 </div>
 
-                <!-- Rule 4 -->
+                <!-- Accordion 4 -->
                 <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g4')">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -438,7 +449,7 @@
                     </div>
                 </div>
 
-                <!-- Rule 5 -->
+                <!-- Accordion 5 -->
                 <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g5')">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -453,7 +464,7 @@
                     </div>
                 </div>
 
-                <!-- Rule 6 -->
+                <!-- Accordion 6 -->
                 <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g6')">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -468,7 +479,7 @@
                     </div>
                 </div>
 
-                <!-- Schedule -->
+                <!-- Accordion 7: Recommended Schedule -->
                 <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g7')">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -480,7 +491,7 @@
                     <div id="g7-body" class="hidden mt-4 pt-4 border-t border-bakery-pink/30 text-sm text-bakery-darkbrown/80 space-y-2 font-sans">
                         <div class="bg-bakery-cream p-4 rounded-2xl border border-bakery-pink space-y-2">
                             <p><strong>Mon / Wed / Fri:</strong> 15 mins Vocabulary & Flashcards on Anki / LingoDeer.</p>
-                            <p><strong>Tue / Thu:</strong> 15 mins Grammar Rules & Writing practice in your notebook.</p>
+                            <p><strong>Tue / Thu:</strong> 15 mins Worksheets & Writing practice in your notebook.</p>
                             <p><strong>Weekend:</strong> Watch a drama/movie or listen to songs in your target language with green tea!</p>
                         </div>
                     </div>
@@ -630,7 +641,7 @@
             <button onclick="closePreviewModal()" class="absolute top-4 right-4 w-8 h-8 bg-bakery-pink rounded-full flex items-center justify-center text-bakery-darkbrown">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <h3 id="preview-modal-title" class="font-serif text-2xl text-bakery-darkbrown mb-2">Study Guide Preview</h3>
+            <h3 id="preview-modal-title" class="font-serif text-2xl text-bakery-darkbrown mb-2">Study Worksheet Preview</h3>
             <div id="preview-modal-content" class="bg-bakery-cream p-4 rounded-2xl border border-bakery-pink text-xs space-y-2 text-bakery-darkbrown max-h-80 overflow-y-auto font-sans">
                 <!-- Dynamic Content -->
             </div>
@@ -642,7 +653,7 @@
     <footer class="mt-12 bg-bakery-pink/30 border-t-2 border-bakery-pink py-8 text-center relative z-10">
         <div class="max-w-4xl mx-auto px-4 space-y-3">
             <div class="font-momo text-3xl text-bakery-darkbrown">Ania's Language Bakery</div>
-            <p class="font-grace text-sm text-bakery-brown">Baked with love and sugar 🥐✨</p>
+            <p class="font-grace text-sm text-bakery-brown">Baked with love, sugar & 3+ years of Thai learning 🥐✨</p>
             <p class="text-xs text-bakery-darkbrown/60">© 2026 Ania's Language Bakery. All rights reserved. Designed for joyful language friends.</p>
         </div>
     </footer>
@@ -654,19 +665,38 @@
         const languageData = {
             thai: {
                 flag: '🇹🇭',
-                title: 'Thai Bakery',
-                description: 'Bake sweet Thai conversation skills! Learn tonal vocabulary, download writing sheets, and find top Thai apps.',
+                title: 'Thai Bakery (3+ Years Focus)',
+                description: 'Bake sweet Thai conversation skills! Having studied Thai intensively for over 3 years, I have collected the best worksheets, tone videos, and phrasebooks.',
                 vocab: [
                     { eng: 'Hello / Goodbye', rom: 'Sawasdee (krap/kah)', target: 'สวัสดี', category: 'Greetings' },
                     { eng: 'Thank you', rom: 'Khob khun (krap/kah)', target: 'ขอบคุณ', category: 'Greetings' },
                     { eng: 'Delicious', rom: 'Aroy', target: 'อร่อย', category: 'Food & Desserts' },
                     { eng: 'Water', rom: 'Nam', target: 'น้ำ', category: 'Food & Desserts' },
                     { eng: 'How much is this?', rom: 'Tao rai?', target: 'เท่าไหร่?', category: 'Common Phrases' },
-                    { eng: 'Sweet / Cake', rom: 'Khanom', target: 'ขนม', category: 'Desserts' }
+                    { eng: 'Sweet / Cake', rom: 'Khanom', target: 'ขนม', category: 'Desserts' },
+                    { eng: 'Not spicy', rom: 'Mai phet', target: 'ไม่เผ็ด', category: 'Food & Desserts' },
+                    { eng: 'I love bakery treats', rom: 'Chob khanom', target: 'ชอบขนม', category: 'Common Phrases' }
                 ],
+                // EXPANSE PDF / STUDY WORKSHEETS MATCHING SCREENSHOTS
                 pdfs: [
-                    { title: 'Thai Alphabet Cheat Sheet', desc: 'Consonants & Vowel charts', size: '1.2 MB' },
-                    { title: 'Thai Tones Quick Rules', desc: 'Tone rules breakdown table', size: '850 KB' }
+                    { title: 'Thai Alphabets & Writing Workbook', desc: 'Consonants & Vowel tracing sheets' },
+                    { title: 'Opposite Verbs & Adjectives', desc: 'Essential Thai antonym pairs list' },
+                    { title: '50 Most Common Nouns', desc: 'Core everyday vocabulary' },
+                    { title: '50 Most Common Verbs', desc: 'Essential action verbs in Thai' },
+                    { title: '50 Most Common Adjectives', desc: 'Descriptive words list' },
+                    { title: 'Top 25 Questions You Need to Know', desc: 'Must-know questions & answers' },
+                    { title: 'Talk About Family in Thai', desc: 'Family members & relations' },
+                    { title: '40+ Words & Phrases for Ordering Food', desc: 'Restaurant & street food guide' },
+                    { title: 'Goals & New Year\'s Resolutions', desc: 'Setting study milestones in Thai' },
+                    { title: 'Ways to Say Goodbye in Thai', desc: 'Polite & casual leave-taking' },
+                    { title: 'Halloween Words & Phrases', desc: 'Spooky & fun holiday vocab' },
+                    { title: 'Most Common Thai Greetings', desc: 'Daily greetings cheat sheet' },
+                    { title: 'How to Ask "How Are You?" & Answer', desc: 'Natural conversations' },
+                    { title: 'Love Phrases for Valentine\'s Day', desc: 'Sweet romantic phrases' },
+                    { title: '50 Must-Know Personality Adjectives', desc: 'Describe character & mood' },
+                    { title: 'Common Reasons for Learning Thai', desc: 'Motivation & phrase bank' },
+                    { title: 'Time-Related Words & Phrases', desc: 'Days, months & times of day' },
+                    { title: '60 Words & Phrases for Winter Season', desc: 'Seasonal vocabulary' }
                 ],
                 apps: [
                     { name: 'LingoDeer', icon: '🦌', desc: 'Structured Asian language lessons.', link: 'https://www.lingodeer.com' },
@@ -691,8 +721,10 @@
                     { eng: 'Bubble Tea', rom: 'Zhēnzhū nǎichá', target: '珍珠奶茶', category: 'Desserts' }
                 ],
                 pdfs: [
-                    { title: 'HSK 1 Essential Vocab List', desc: 'Top 150 words with Pinyin', size: '2.1 MB' },
-                    { title: 'Radicals Writing Grid', desc: 'Printable stroke practice', size: '1.5 MB' }
+                    { title: 'Chinese Character Radicals Workbook', desc: 'Radical stroke practice' },
+                    { title: 'HSK 1 Essential Vocab List', desc: 'Top 150 words with Pinyin' },
+                    { title: '50 Most Common Mandarin Verbs', desc: 'Core verbs worksheet' },
+                    { title: 'Ordering Tea & Desserts in Chinese', desc: 'Restaurant phrasebook' }
                 ],
                 apps: [
                     { name: 'Pleco Dictionary', icon: '📖', desc: 'Must-have dictionary & stroke order.', link: 'https://www.pleco.com' },
@@ -717,8 +749,10 @@
                     { eng: 'Cute', rom: 'Kawaii', target: 'かわいい', category: 'Common Phrases' }
                 ],
                 pdfs: [
-                    { title: 'Hiragana & Katakana Worksheets', desc: 'Stroke order tracing sheets', size: '3.0 MB' },
-                    { title: 'N5 Grammar Bakery Guide', desc: 'Beginner particle summary', size: '1.8 MB' }
+                    { title: 'Hiragana & Katakana Tracing Workbook', desc: 'Stroke order tracing sheets' },
+                    { title: '50 Most Common Japanese Nouns', desc: 'Essential Japanese nouns' },
+                    { title: 'N5 Grammar Bakery Guide', desc: 'Beginner particle summary' },
+                    { title: 'Ordering Sweets at a Japanese Café', desc: 'Café conversation' }
                 ],
                 apps: [
                     { name: 'Renshuu', icon: '🐉', desc: 'Japanese learning made playful.', link: 'https://www.renshuu.org' },
@@ -743,8 +777,10 @@
                     { eng: 'Please give me this', rom: 'Igeo juseyo', target: '이거 주세요', category: 'Common Phrases' }
                 ],
                 pdfs: [
-                    { title: 'Hangul Alphabet Mastery Guide', desc: 'Consonants & vowels chart', size: '1.4 MB' },
-                    { title: 'K-Drama Phrasebook', desc: 'Cute everyday dialogue notes', size: '2.2 MB' }
+                    { title: 'Hangul Alphabet Mastery Guide', desc: 'Consonants & vowels chart' },
+                    { title: '50 Most Common Korean Verbs', desc: 'Verb conjugation cheatsheet' },
+                    { title: 'K-Drama Phrasebook', desc: 'Cute everyday dialogue notes' },
+                    { title: 'Ordering Bakery & Coffee in Korean', desc: 'Café dialogue guide' }
                 ],
                 apps: [
                     { name: 'Naver Dictionary', icon: '🟢', desc: 'Official Korean dictionary app.', link: 'https://dict.naver.com' },
@@ -769,8 +805,10 @@
                     { eng: 'Sweet treat', rom: 'Matamis', target: 'Matamis', category: 'Desserts' }
                 ],
                 pdfs: [
-                    { title: 'Tagalog Grammar Essentials', desc: 'Verb affixes & pronoun cheat sheet', size: '1.1 MB' },
-                    { title: 'Filipino Food & Bakery Vocab', desc: 'Phrases for ordering food', size: '900 KB' }
+                    { title: 'Tagalog Grammar Essentials', desc: 'Verb affixes & pronoun sheet' },
+                    { title: '50 Most Common Tagalog Words', desc: 'Everyday vocabulary' },
+                    { title: 'Filipino Food & Bakery Vocab', desc: 'Phrases for ordering food' },
+                    { title: 'Tagalog Greetings & Polite Phrases', desc: 'Po and Opo usage guide' }
                 ],
                 apps: [
                     { name: 'Drops Tagalog', icon: '💧', desc: '5-minute visual vocabulary builder.', link: 'https://languagedrops.com' },
@@ -804,9 +842,9 @@
                 renderLanguagePage(tabId);
                 document.getElementById('tab-language-container').classList.remove('hidden');
                 document.getElementById(`nav-${tabId}`).classList.add('bg-bakery-pink', 'shadow-sm');
-            } else if (tabId === 'guides') {
-                document.getElementById('tab-guides').classList.remove('hidden');
-                document.getElementById('nav-guides').classList.add('bg-bakery-pink', 'shadow-sm');
+            } else if (tabId === 'rules') {
+                document.getElementById('tab-rules').classList.remove('hidden');
+                document.getElementById('nav-rules').classList.add('bg-bakery-pink', 'shadow-sm');
             } else {
                 document.getElementById('tab-home').classList.remove('hidden');
                 document.getElementById('nav-home').classList.add('bg-bakery-pink', 'shadow-sm');
@@ -828,24 +866,31 @@
             // Render Vocabulary Cards
             renderVocabCards(data.vocab);
 
-            // Render PDFs
+            // Render Worksheets (PDFs) styled like Image 3 & Image 4
             const pdfContainer = document.getElementById('pdf-list-grid');
-            pdfContainer.innerHTML = data.pdfs.map(pdf => `
-                <div class="bg-white p-4 rounded-2xl border border-bakery-pink hover:border-bakery-brown transition shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full font-bold">PDF Guide</span>
-                            <span class="text-[10px] text-bakery-brown">${pdf.size}</span>
+            pdfContainer.innerHTML = data.pdfs.map((pdf) => `
+                <div class="bg-white p-4 rounded-3xl border-2 border-bakery-pink hover:border-bakery-brown transition shadow-sm flex flex-col justify-between items-center text-center group">
+                    <div class="w-full bg-bakery-blue/30 rounded-2xl p-4 mb-3 border border-bakery-pink/50 flex flex-col items-center relative overflow-hidden group-hover:bg-bakery-pink/20 transition">
+                        <!-- Mini Printable Sheet Icon SVG -->
+                        <div class="w-16 h-20 bg-white border-2 border-gray-300 rounded-md shadow-md p-1.5 flex flex-col justify-between">
+                            <div class="w-full h-1 bg-red-400 rounded"></div>
+                            <div class="space-y-1">
+                                <div class="w-full h-1 bg-gray-200 rounded"></div>
+                                <div class="w-3/4 h-1 bg-gray-200 rounded"></div>
+                                <div class="w-1/2 h-1 bg-gray-200 rounded"></div>
+                            </div>
+                            <div class="w-full text-[6px] text-right text-gray-400 font-mono">PDF</div>
                         </div>
-                        <h5 class="font-serif text-lg text-bakery-darkbrown">${pdf.title}</h5>
-                        <p class="text-xs text-bakery-darkbrown/70 mt-1">${pdf.desc}</p>
                     </div>
-                    <div class="mt-4 flex gap-2">
-                        <button onclick="triggerDownload('${pdf.title}')" class="flex-1 bg-bakery-pink hover:bg-bakery-rose text-bakery-darkbrown py-1.5 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1">
-                            <i class="fa-solid fa-download"></i> Download
-                        </button>
-                        <button onclick="openPreview('${pdf.title}', '${pdf.desc}')" class="bg-bakery-yellow hover:bg-yellow-200 text-bakery-darkbrown px-2.5 py-1.5 rounded-xl text-xs transition" title="Preview">
-                            <i class="fa-solid fa-eye"></i>
+                    
+                    <div class="mb-3 flex-1 flex flex-col justify-center">
+                        <h5 class="font-bold text-sm text-bakery-darkbrown leading-tight">${pdf.title}</h5>
+                        <p class="text-[11px] text-bakery-brown mt-1">${pdf.desc}</p>
+                    </div>
+
+                    <div class="w-full flex gap-2">
+                        <button onclick="triggerDownload('${pdf.title}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-full text-xs transition shadow-sm flex items-center justify-center gap-1.5">
+                            <span>Download</span>
                         </button>
                     </div>
                 </div>
@@ -944,16 +989,15 @@
         }
 
         function triggerDownload(title) {
-            alert(`🧁 Downloader Ready!\nStarting download for "${title}". (In a production environment, this links directly to your hosted PDF file).`);
+            alert(`🧁 Downloader Ready!\nStarting download for "${title}". (In production, this downloads your direct PDF file).`);
         }
-
-        function openPreview(title, desc) {
+function openPreview(title, desc) {
             document.getElementById('preview-modal-title').innerText = title;
             document.getElementById('preview-modal-content').innerHTML = `
                 <p><strong>Description:</strong> ${desc}</p>
                 <div class="p-3 bg-white rounded-xl border border-bakery-pink mt-2">
-                    <p class="font-serif text-sm font-bold text-bakery-darkbrown mb-1">Study Preview Snippet:</p>
-                    <p>• Clean handwriting lines for daily stroke practice.<br>• Tone marker color charts.<br>• Essential phrases organized by coffee shop & bakery context.</p>
+                    <p class="font-serif text-sm font-bold text-bakery-darkbrown mb-1">Worksheet Features:</p>
+                    <p>• Clean printable tracing lines.<br>• Tone marker color breakdown.<br>• Essential vocabulary organized by category.</p>
                 </div>
             `;
             const modal = document.getElementById('preview-modal');
@@ -965,7 +1009,7 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
 
-        // ACCORDION TOGGLE FOR GUIDES
+        // ACCORDION TOGGLE
         function toggleGuide(id) {
             const body = document.getElementById(`${id}-body`);
             const icon = document.getElementById(`${id}-icon`);
