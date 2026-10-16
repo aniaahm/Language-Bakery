@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ania's Language Bakery 🥐✨</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Covered+By+Your+Grace&family=Eagle+Lake&family=Instrument+Serif:ital@0;1&family=Monsieur+La+Doulaise&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bakery: {
+                            yellow: '#f7ecc4',
+                            blue: '#ddeffb',
+                            pink: '#f7d7e7',
+                            brown: '#d1a678',
+                            darkbrown: '#5a3d28',
+                            cream: '#fffdf6',
+                            rose: '#f3c1d3',
+                            accent: '#e690a8'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'serif'],
+                        eagle: ['"Eagle Lake"', 'serif'],
+                        beth: ['"Beth Ellen"', 'cursive'],
+                        grace: ['"Covered By Your Grace"', 'cursive'],
+                        momo: ['"Monsieur La Doulaise"', 'cursive'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Bakery Styles & Aesthetic Details */
+        body {
+            background-color: #fffdf6;
+            color: #5a3d28;
+            background-image: radial-gradient(#f7d7e7 1.5px, transparent 1.5px), radial-gradient(#ddeffb 1.5px, #fffdf6 1.5px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+        }
+
+        .scallop-border {
+            background: radial-gradient(circle at 10px -5px, transparent 12px, #f7d7e7 13px);
+            background-size: 20px 20px;
+            background-repeat: repeat-x;
+        }
+
+        .cloud-card {
+            border-radius: 2.5rem;
+            box-shadow: 0 10px 25px -5px rgba(209, 166, 120, 0.15), 0 8px 10px -6px rgba(247, 215, 231, 0.3);
+            border: 2px solid #f7d7e7;
+        }
+
+        .notebook-grid {
+            background-color: #fffdf6;
+            background-image: linear-gradient(#f7d7e7 1px, transparent 1px), linear-gradient(90deg, #f7d7e7 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .sticker-hover {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .sticker-hover:hover {
+            transform: scale(1.1) rotate(4deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fffdf6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f7d7e7;
+            border-radius: 10px;
+            border: 2px solid #fffdf6;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d1a678;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans relative selection:bg-bakery-pink selection:text-bakery-darkbrown">
+
+    <!-- STICKERS LAYER (Customizable PNG Sticker Container) -->
+    <!-- 
+    ===================================================================
+    GITHUB STICKERS CONFIGURATION GUIDE:
+    To customize stickers with your own PNG assets hosted on GitHub:
+    1. Upload your PNG sticker files into your GitHub repository (e.g., ./stickers/bunny.png).
+    2. Replace the src attribute in the <img> tags below or use the on-page "Customizer" panel!
+    ===================================================================
+    -->
+    <div id="stickers-container" class="pointer-events-none fixed inset-0 z-20 overflow-hidden">
+        <!-- Floating Sticker 1: Bunny Chef -->
+        <div class="sticker-wrapper absolute top-24 left-4 md:left-12 pointer-events-auto sticker-hover cursor-pointer" title="Customizable PNG Sticker #1">
+            <img id="sticker-1" src="https://api.iconify.design/fluent-emoji-flat:rabbit-face.svg" alt="Bunny Sticker" class="w-16 h-16 md:w-20 md:h-20 drop-shadow-md filter brightness-105">
+        </div>
+
+        <!-- Floating Sticker 2: Croissant -->
+        <div class="sticker-wrapper absolute top-72 right-4 md:right-12 pointer-events-auto sticker-hover cursor-pointer" title="Customizable PNG Sticker #2">
+            <img id="sticker-2" src="https://api.iconify.design/fluent-emoji-flat:croissant.svg" alt="Croissant Sticker" class="w-14 h-14 md:w-20 md:h-20 drop-shadow-md rotate-12">
+        </div>
+
+        <!-- Floating Sticker 3: Teacup -->
+        <div class="sticker-wrapper absolute bottom-24 left-6 pointer-events-auto sticker-hover cursor-pointer hidden md:block" title="Customizable PNG Sticker #3">
+            <img id="sticker-3" src="https://api.iconify.design/fluent-emoji-flat:teacup-without-handle.svg" alt="Tea Sticker" class="w-16 h-16 drop-shadow-md -rotate-12">
+        </div>
+
+        <!-- Floating Sticker 4: Pretzel -->
+        <div class="sticker-wrapper absolute bottom-12 right-8 pointer-events-auto sticker-hover cursor-pointer hidden md:block" title="Customizable PNG Sticker #4">
+            <img id="sticker-4" src="https://api.iconify.design/fluent-emoji-flat:pretzel.svg" alt="Pretzel Sticker" class="w-16 h-16 drop-shadow-md rotate-6">
+        </div>
+    </div>
+
+    <!-- STICKER CUSTOMIZER FLOATING TOOLBAR -->
+    <div class="fixed bottom-4 left-4 z-40 bg-white/90 backdrop-blur border-2 border-bakery-pink rounded-2xl p-2 shadow-lg flex items-center space-x-2 text-xs">
+        <button onclick="toggleStickerModal()" class="bg-bakery-pink hover:bg-bakery-rose text-bakery-darkbrown px-3 py-1.5 rounded-xl font-medium transition flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-note-sticky text-bakery-brown"></i>
+            <span>Sticker Settings</span>
+        </button>
+        <button onclick="toggleStickersVisibility()" id="toggle-stickers-btn" class="bg-bakery-yellow hover:bg-yellow-200 text-bakery-darkbrown px-2.5 py-1.5 rounded-xl transition">
+            <i class="fa-solid fa-eye"></i>
+        </button>
+    </div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="sticky top-0 z-30 bg-bakery-cream/95 backdrop-blur-md border-b-2 border-bakery-pink shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+            
+            <!-- Logo & Title -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                <div class="w-12 h-12 rounded-full bg-bakery-pink flex items-center justify-center shadow-inner border border-white">
+                    <span class="text-2xl">🧁</span>
+                </div>
+                <div>
+                    <h1 class="font-serif text-2xl md:text-3xl text-bakery-darkbrown tracking-wide font-bold flex items-center gap-2">
+                        Ania's Language Bakery
+                    </h1>
+                    <p class="font-grace text-xs text-bakery-brown tracking-widest -mt-1">Full of love, sugar & vocabulary</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex flex-wrap items-center justify-center gap-1.5 md:gap-2">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 bg-bakery-pink text-bakery-darkbrown shadow-sm">
+                    Home
+                </button>
+                <button onclick="switchTab('thai')" id="nav-thai" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
+                    🇹🇭 Thai
+                </button>
+                <button onclick="switchTab('chinese')" id="nav-chinese" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
+                    🇨🇳 Chinese
+                </button>
+                <button onclick="switchTab('japanese')" id="nav-japanese" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
+                    🇯🇵 Japanese
+                </button>
+                <button onclick="switchTab('korean')" id="nav-korean" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
+                    🇰🇷 Korean
+                </button>
+                <button onclick="switchTab('tagalog')" id="nav-tagalog" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
+                    🇵🇭 Tagalog
+                </button>
+                <button onclick="switchTab('guides')" id="nav-guides" class="nav-btn px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-bakery-pink/50 text-bakery-darkbrown">
+                    📖 Guides & Notes
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-8 relative z-10">
+
+        <!-- ================= HOMEPAGE SECTION ================= -->
+        <section id="tab-home" class="tab-content space-y-10">
+            
+            <!-- Hero Welcome Card -->
+            <div class="cloud-card bg-white p-8 md:p-12 text-center relative overflow-hidden">
+                <!-- Background decorative elements -->
+                <div class="absolute -top-10 -left-10 w-32 h-32 bg-bakery-yellow/40 rounded-full blur-xl pointer-events-none"></div>
+                <div class="absolute -bottom-10 -right-10 w-36 h-36 bg-bakery-blue/40 rounded-full blur-xl pointer-events-none"></div>
+
+                <div class="inline-block px-4 py-1 bg-bakery-yellow text-bakery-darkbrown font-grace text-lg rounded-full mb-3 shadow-sm border border-yellow-200">
+                    Welcome to our cozy study café! ☕🍰
+                </div>
+
+                <h2 class="font-serif text-4xl md:text-5xl text-bakery-darkbrown mb-4">
+                    Treat Yourself Like Language Royalty
+                </h2>
+
+                <p class="max-w-2xl mx-auto text-bakery-darkbrown/80 leading-relaxed text-base md:text-lg mb-8 font-sans">
+                    A sweet, joyful space created for friends to bake multilingual skills! Explore curated vocabulary recipes, study notes, downloadable guides, and essential tools for <span class="font-semibold text-bakery-brown">Thai, Chinese, Japanese, Korean,</span> and <span class="font-semibold text-bakery-brown">Tagalog</span>.
+                </p>
+
+                <!-- Interactive Menu Items Grid (Inspired by Aesthetic Menu Reference) -->
+                <div class="bg-bakery-cream/80 p-6 md:p-8 rounded-3xl border-2 border-bakery-pink inline-block max-w-xl w-full shadow-sm">
+                    <div class="font-momo text-3xl md:text-4xl text-bakery-darkbrown mb-1">The Bakery Menu</div>
+                    <div class="font-grace text-sm text-bakery-brown mb-6">Select a sweet language treat below</div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div onclick="switchTab('thai')" class="p-3 bg-white rounded-2xl border border-bakery-pink hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-sm">
+                            <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🥐</div>
+                            <span class="font-eagle text-xs text-bakery-darkbrown block">Croissant</span>
+                            <span class="text-[11px] text-pink-500 font-bold block mt-0.5">Thai</span>
+                        </div>
+                        <div onclick="switchTab('chinese')" class="p-3 bg-white rounded-2xl border border-bakery-pink hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-sm">
+                            <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🥨</div>
+                            <span class="font-eagle text-xs text-bakery-darkbrown block">Pretzel</span>
+                            <span class="text-[11px] text-pink-500 font-bold block mt-0.5">Chinese</span>
+                        </div>
+                        <div onclick="switchTab('japanese')" class="p-3 bg-white rounded-2xl border border-bakery-pink hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-sm">
+                            <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🍡</div>
+                            <span class="font-eagle text-xs text-bakery-darkbrown block">Mochi</span>
+                            <span class="text-[11px] text-pink-500 font-bold block mt-0.5">Japanese</span>
+                        </div>
+                        <div onclick="switchTab('korean')" class="p-3 bg-white rounded-2xl border border-bakery-pink hover:border-bakery-brown cursor-pointer transition-all hover:scale-105 group text-center shadow-sm">
+                            <div class="text-3xl mb-1 group-hover:rotate-12 transition-transform">🍩</div>
+                            <span class="font-eagle text-xs text-bakery-darkbrown block">Doughnut</span>
+                            <span class="text-[11px] text-pink-500 font-bold block mt-0.5">Korean</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FLOATING GIFT VOUCHER PROMO BOX -->
+            <div class="relative max-w-lg mx-auto">
+                <div class="animate-float cursor-pointer bg-gradient-to-r from-bakery-pink via-bakery-yellow to-bakery-blue p-1 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow" onclick="openVoucherModal()">
+                    <div class="bg-white rounded-[22px] p-6 text-center border border-white flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="text-left flex-1">
+                            <span class="bg-bakery-pink text-bakery-darkbrown text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Special Gift 🎁</span>
+                            <h3 class="font-serif text-2xl text-bakery-darkbrown mt-2">Notebook Layout Plan</h3>
+                            <p class="text-xs text-bakery-darkbrown/70 mt-1">Tap to claim your master multi-language comparative cheat sheet!</p>
+                        </div>
+                        <button class="bg-bakery-darkbrown hover:bg-bakery-brown text-white font-medium text-xs px-5 py-3 rounded-2xl transition shadow-md whitespace-nowrap flex items-center gap-2">
+                            <span>Open Voucher</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Features Highlights -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="cloud-card bg-bakery-blue/30 p-6">
+                    <div class="text-3xl mb-3">📚</div>
+                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-2">Notebook Design</h4>
+                    <p class="text-sm text-bakery-darkbrown/75">Organized vocabulary structured like handwritten notebook pages with English, Romanization & Scripts.</p>
+                </div>
+                <div class="cloud-card bg-bakery-pink/30 p-6">
+                    <div class="text-3xl mb-3">📲</div>
+                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-2">Curated Resources</h4>
+                    <p class="text-sm text-bakery-darkbrown/75">Direct links to top apps (Anki, HelloTalk, LingoDeer), dictionary tools, and study guide downloads.</p>
+                </div>
+                <div class="cloud-card bg-bakery-yellow/40 p-6">
+                    <div class="text-3xl mb-3">🥖</div>
+                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-2">Bite-Sized Guides</h4>
+                    <p class="text-sm text-bakery-darkbrown/75">Easy rules on Thai tones, Hangul creation, Chinese character basics, and daily study schedules.</p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= DYNAMIC LANGUAGE TEMPLATE SECTION ================= -->
+        <!-- This container dynamically renders sub-page views for Thai, Chinese, Japanese, Korean, Tagalog -->
+        <section id="tab-language-container" class="tab-content hidden space-y-8">
+            
+            <!-- Dynamic Header Card -->
+            <div class="cloud-card bg-white p-6 md:p-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 border-2 border-bakery-pink">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-bakery-yellow rounded-full text-xs font-semibold text-bakery-darkbrown mb-2">
+                        <span id="lang-flag-badge">🇹🇭</span>
+                        <span id="lang-subtitle">Language Bakery Menu</span>
+                    </div>
+                    <h2 id="lang-title" class="font-serif text-4xl md:text-5xl text-bakery-darkbrown">Thai Bakery</h2>
+                    <p id="lang-description" class="text-sm text-bakery-brown mt-2 max-w-xl">Master essential phrases, vocabulary, and top recommended study resources in our sweet notebook layout.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <input type="text" id="vocab-search" oninput="filterVocab()" placeholder="Search vocabulary..." class="px-4 py-2 rounded-2xl border-2 border-bakery-pink focus:outline-none focus:border-bakery-brown text-sm bg-bakery-cream">
+                </div>
+            </div>
+
+            <!-- Notebook Vocabulary Section -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-serif text-2xl text-bakery-darkbrown flex items-center gap-2">
+                        <span>📝</span> Notebook Vocabulary Plan
+                    </h3>
+                    <span class="text-xs text-bakery-brown font-grace">Hand-baked learning cards</span>
+                </div>
+
+                <div id="vocab-cards-grid" class="grid md:grid-cols-2 gap-4">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- Resource Hub Section -->
+            <div class="cloud-card bg-bakery-cream p-6 md:p-8 space-y-8 border-2 border-bakery-pink">
+                <div class="border-b-2 border-bakery-pink/50 pb-4">
+                    <h3 class="font-serif text-3xl text-bakery-darkbrown flex items-center gap-3">
+                        <span>🧁</span> Resource Hub & Study Bakery
+                    </h3>
+                    <p class="text-xs text-bakery-brown mt-1">Download cheat sheets, browse curated apps, and open study previews.</p>
+                </div>
+
+                <!-- Downloadable PDFs & Cheat Sheets -->
+                <div>
+                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-file-pdf text-red-400"></i> Downloadable Study PDFs
+                    </h4>
+                    <div id="pdf-list-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Curated App Suggestions -->
+                <div>
+                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-mobile-screen text-bakery-brown"></i> Curated App Suggestions
+                    </h4>
+                    <div id="apps-list-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- External Dictionary & Web Links -->
+                <div>
+                    <h4 class="font-serif text-xl text-bakery-darkbrown mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-blue-400"></i> Recommended Dictionary & Web Tools
+                    </h4>
+                    <div id="links-list-grid" class="flex flex-wrap gap-3">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= GUIDES & NOTES SECTION ================= -->
+        <section id="tab-guides" class="tab-content hidden space-y-8">
+            
+            <div class="cloud-card bg-white p-8 border-2 border-bakery-pink text-center">
+                <span class="text-3xl">📖</span>
+                <h2 class="font-serif text-4xl text-bakery-darkbrown mt-2">Guides & Study Notes</h2>
+                <p class="text-sm text-bakery-brown max-w-lg mx-auto mt-1">Essays, rules, and study guides across our five bakery languages.</p>
+            </div>
+
+            <!-- Guides Accordion List -->
+            <div class="space-y-4">
+                
+                <!-- Rule 1 -->
+                <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g1')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-bakery-pink flex items-center justify-center text-xs font-bold text-bakery-darkbrown">1</span>
+                            <h3 class="font-serif text-xl text-bakery-darkbrown">Our Language Learning Adventure Rules</h3>
+                        </div>
+                        <i id="g1-icon" class="fa-solid fa-chevron-down text-bakery-brown transition-transform"></i>
+                    </div>
+                    <div id="g1-body" class="hidden mt-4 pt-4 border-t border-bakery-pink/30 text-sm text-bakery-darkbrown/80 space-y-2 font-sans">
+                        <p>🍰 <strong>Rule #1: Consistency over Intensity.</strong> Studying 10 minutes every day while sipping tea is better than cramming for 3 hours once a month.</p>
+                        <p>🧁 <strong>Rule #2: Embrace Mistakes.</strong> Making mistakes is just the flour mess before baking a delicious cake!</p>
+                        <p>🍵 <strong>Rule #3: Speak Out Loud.</strong> Say every word out loud as if ordering at a cute bakery counter.</p>
+                    </div>
+                </div>
+
+                <!-- Rule 2 -->
+                <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g2')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-bakery-yellow flex items-center justify-center text-xs font-bold text-bakery-darkbrown">2</span>
+                            <h3 class="font-serif text-xl text-bakery-darkbrown">Tips for Mastering Tones in Thai</h3>
+                        </div>
+                        <i id="g2-icon" class="fa-solid fa-chevron-down text-bakery-brown transition-transform"></i>
+                    </div>
+                    <div id="g2-body" class="hidden mt-4 pt-4 border-t border-bakery-pink/30 text-sm text-bakery-darkbrown/80 space-y-2 font-sans">
+                        <p>Thai has 5 tones: Mid, Low, Falling, High, and Rising.</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Mid Tone:</strong> Flat relaxed voice.</li>
+                            <li><strong>Low Tone:</strong> Lower pitched, like asking a serious question softly.</li>
+                            <li><strong>Falling Tone:</strong> High pitch dropping fast (like saying "Oh!").</li>
+                            <li><strong>High Tone:</strong> High pitched voice, slightly surprised pitch.</li>
+                            <li><strong>Rising Tone:</strong> Starts low and rises up (like asking "What?").</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Rule 3 -->
+                <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g3')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-bakery-blue flex items-center justify-center text-xs font-bold text-bakery-darkbrown">3</span>
+                            <h3 class="font-serif text-xl text-bakery-darkbrown">Understanding Chinese Characters Basics</h3>
+                        </div>
+                        <i id="g3-icon" class="fa-solid fa-chevron-down text-bakery-brown transition-transform"></i>
+                    </div>
+                    <div id="g3-body" class="hidden mt-4 pt-4 border-t border-bakery-pink/30 text-sm text-bakery-darkbrown/80 space-y-2 font-sans">
+                        <p>Chinese characters (Hanzi) are built like recipes using basic components called <strong>radicals</strong>.</p>
+                        <p>Learn radicals first! For example, <span class="font-bold text-pink-600">氵</span> signifies water (found in <i>河 river</i>, <i>酒 alcohol</i>), while <span class="font-bold text-pink-600">讠</span> signifies speech (found in <i>话 speak</i>, <i>语 language</i>).</p>
+                    </div>
+                </div>
+
+                <!-- Rule 4 -->
+                <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g4')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-bakery-pink flex items-center justify-center text-xs font-bold text-bakery-darkbrown">4</span>
+                            <h3 class="font-serif text-xl text-bakery-darkbrown">Pronunciation Guide for Japanese Hiragana/Katakana</h3>
+                        </div>
+                        <i id="g4-icon" class="fa-solid fa-chevron-down text-bakery-brown transition-transform"></i>
+                    </div>
+                    <div id="g4-body" class="hidden mt-4 pt-4 border-t border-bakery-pink/30 text-sm text-bakery-darkbrown/80 space-y-2 font-sans">
+                        <p>Japanese vowels are always clean and short: <strong>A (ah), I (ee), U (oo), E (eh), O (oh)</strong>.</p>
+                        <p>Use Hiragana for native Japanese words and Katakana for foreign borrowed words (e.g. ケーキ - Kēki for Cake!).</p>
+                    </div>
+                </div>
+
+                <!-- Rule 5 -->
+                <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g5')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-bakery-yellow flex items-center justify-center text-xs font-bold text-bakery-darkbrown">5</span>
+                            <h3 class="font-serif text-xl text-bakery-darkbrown">Korean Hangul Essentials</h3>
+                        </div>
+                        <i id="g5-icon" class="fa-solid fa-chevron-down text-bakery-brown transition-transform"></i>
+                    </div>
+                    <div id="g5-body" class="hidden mt-4 pt-4 border-t border-bakery-pink/30 text-sm text-bakery-darkbrown/80 space-y-2 font-sans">
+                        <p>Hangul was scientifically designed by King Sejong in 1443 to be learned in a single afternoon!</p>
+                        <p>Letters are stacked into syllable blocks (Consonant + Vowel + Optional Final Consonant). Example: <span class="font-bold">빵 (Bbang = Bread)</span>.</p>
+                    </div>
+                </div>
+
+                <!-- Rule 6 -->
+                <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g6')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-bakery-blue flex items-center justify-center text-xs font-bold text-bakery-darkbrown">6</span>
+                            <h3 class="font-serif text-xl text-bakery-darkbrown">Tagalog Grammar Quick Start</h3>
+                        </div>
+                        <i id="g6-icon" class="fa-solid fa-chevron-down text-bakery-brown transition-transform"></i>
+                    </div>
+                    <div id="g6-body" class="hidden mt-4 pt-4 border-t border-bakery-pink/30 text-sm text-bakery-darkbrown/80 space-y-2 font-sans">
+                        <p>Tagalog often places the verb first in a sentence (Verb - Subject - Object pattern).</p>
+                        <p>Add politeness markers: Always append <strong>Po</strong> and <strong>Opo</strong> when speaking to elders or customer service staff!</p>
+                    </div>
+                </div>
+
+                <!-- Schedule -->
+                <div class="cloud-card bg-white p-5 border-2 border-bakery-pink cursor-pointer transition hover:shadow-md" onclick="toggleGuide('g7')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-bakery-pink flex items-center justify-center text-xs font-bold text-bakery-darkbrown">7</span>
+                            <h3 class="font-serif text-xl text-bakery-darkbrown">Recommended Learning Schedule</h3>
+                        </div>
+                        <i id="g7-icon" class="fa-solid fa-chevron-down text-bakery-brown transition-transform"></i>
+                    </div>
+                    <div id="g7-body" class="hidden mt-4 pt-4 border-t border-bakery-pink/30 text-sm text-bakery-darkbrown/80 space-y-2 font-sans">
+                        <div class="bg-bakery-cream p-4 rounded-2xl border border-bakery-pink space-y-2">
+                            <p><strong>Mon / Wed / Fri:</strong> 15 mins Vocabulary & Flashcards on Anki / LingoDeer.</p>
+                            <p><strong>Tue / Thu:</strong> 15 mins Grammar Rules & Writing practice in your notebook.</p>
+                            <p><strong>Weekend:</strong> Watch a drama/movie or listen to songs in your target language with green tea!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- GIFT VOUCHER / NOTEBOOK LAYOUT PLAN MODAL -->
+    <div id="voucher-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-3xl p-6 md:p-8 border-4 border-bakery-pink shadow-2xl relative">
+            
+            <button onclick="closeVoucherModal()" class="absolute top-4 right-4 w-9 h-9 bg-bakery-pink rounded-full flex items-center justify-center text-bakery-darkbrown hover:bg-bakery-rose transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Vintage Notebook Page Container -->
+            <div class="notebook-grid border-2 border-bakery-brown/30 rounded-2xl p-6 relative">
+                
+                <!-- Vintage Spiral Rings Header -->
+                <div class="flex justify-between items-center -mt-9 mb-4 px-4">
+                    <div class="w-4 h-6 bg-gray-400 rounded-full border border-gray-600"></div>
+                    <div class="w-4 h-6 bg-gray-400 rounded-full border border-gray-600"></div>
+                    <div class="w-4 h-6 bg-gray-400 rounded-full border border-gray-600"></div>
+                    <div class="w-4 h-6 bg-gray-400 rounded-full border border-gray-600"></div>
+                    <div class="w-4 h-6 bg-gray-400 rounded-full border border-gray-600"></div>
+                </div>
+
+                <div class="text-center mb-6">
+                    <span class="font-grace text-sm text-bakery-brown block">★ Gift Voucher Feature ★</span>
+                    <h2 class="font-serif text-3xl md:text-4xl text-bakery-darkbrown">Notebook Layout Plan</h2>
+                    <p class="font-beth text-xs text-bakery-accent mt-1">Multi-Language Comparative Vocabulary Sheet</p>
+                </div>
+
+                <!-- Notebook Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="border-b-2 border-bakery-pink bg-bakery-pink/20 font-serif text-bakery-darkbrown text-base">
+                                <th class="p-2.5">English</th>
+                                <th class="p-2.5">Romanized</th>
+                                <th class="p-2.5">🇹🇭 Thai</th>
+                                <th class="p-2.5">🇨🇳 Chinese</th>
+                                <th class="p-2.5">🇯🇵 Japanese</th>
+                                <th class="p-2.5">🇰🇷 Korean</th>
+                                <th class="p-2.5">🇵🇭 Tagalog</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-bakery-pink/40 font-sans text-bakery-darkbrown">
+                            <tr class="hover:bg-bakery-yellow/20">
+                                <td class="p-2.5 font-semibold">Hello</td>
+                                <td class="p-2.5 text-xs text-bakery-brown">Sawasdee / Nǐ hǎo / Kon'nichiwa / Annyeong / Kumusta</td>
+                                <td class="p-2.5">สวัสดี</td>
+                                <td class="p-2.5">你好</td>
+                                <td class="p-2.5">こんにちは</td>
+                                <td class="p-2.5">안녕하세요</td>
+                                <td class="p-2.5">Kumusta</td>
+                            </tr>
+                            <tr class="hover:bg-bakery-yellow/20">
+                                <td class="p-2.5 font-semibold">Thank you</td>
+                                <td class="p-2.5 text-xs text-bakery-brown">Khob khun / Xièxie / Arigatō / Gamsahamdida / Salamat</td>
+                                <td class="p-2.5">ขอบคุณ</td>
+                                <td class="p-2.5">谢谢</td>
+                                <td class="p-2.5">ありがとう</td>
+                                <td class="p-2.5">감사합니다</td>
+                                <td class="p-2.5">Salamat</td>
+                            </tr>
+                            <tr class="hover:bg-bakery-yellow/20">
+                                <td class="p-2.5 font-semibold">Delicious!</td>
+                                <td class="p-2.5 text-xs text-bakery-brown">Aroy / Hǎochī / Oishii / Masiss-eoyo / Masarap</td>
+                                <td class="p-2.5">อร่อย</td>
+                                <td class="p-2.5">好吃</td>
+                                <td class="p-2.5">おいしい</td>
+                                <td class="p-2.5">맛있어요</td>
+                                <td class="p-2.5">Masarap</td>
+                            </tr>
+                            <tr class="hover:bg-bakery-yellow/20">
+                                <td class="p-2.5 font-semibold">Bakery / Bread</td>
+                                <td class="p-2.5 text-xs text-bakery-brown">Khanom pang / Miànbāo / Pan / Pbang / Tinapay</td>
+                                <td class="p-2.5">ขนมปัง</td>
+                                <td class="p-2.5">面包</td>
+                                <td class="p-2.5">パン</td>
+                                <td class="p-2.5">빵</td>
+                                <td class="p-2.5">Tinapay</td>
+                            </tr>
+                            <tr class="hover:bg-bakery-yellow/20">
+                                <td class="p-2.5 font-semibold">Coffee</td>
+                                <td class="p-2.5 text-xs text-bakery-brown">Kafae / Kāfēi / Kōhī / Kopei / Kape</td>
+                                <td class="p-2.5">กาแฟ</td>
+                                <td class="p-2.5">咖啡</td>
+                                <td class="p-2.5">コーヒー</td>
+                                <td class="p-2.5">커피</td>
+                                <td class="p-2.5">Kape</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <button onclick="closeVoucherModal()" class="bg-bakery-pink hover:bg-bakery-rose text-bakery-darkbrown font-medium text-xs px-6 py-2.5 rounded-full transition shadow-sm">
+                        Close Notebook
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- STICKERS MANAGER MODAL -->
+    <div id="sticker-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white max-w-md w-full rounded-3xl p-6 border-4 border-bakery-pink shadow-2xl relative">
+            <button onclick="toggleStickerModal()" class="absolute top-4 right-4 w-8 h-8 bg-bakery-pink rounded-full flex items-center justify-center text-bakery-darkbrown">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-serif text-2xl text-bakery-darkbrown mb-2">PNG Sticker Manager</h3>
+            <p class="text-xs text-bakery-brown mb-4">Paste image URLs (e.g., from your GitHub repository `https://raw.githubusercontent.com/...`) to update stickers on the site!</p>
+
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-semibold mb-1">Sticker 1 URL (Bunny):</label>
+                    <input type="text" id="sticker-1-input" class="w-full px-3 py-1.5 rounded-xl border border-bakery-pink bg-bakery-cream" value="https://api.iconify.design/fluent-emoji-flat:rabbit-face.svg">
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Sticker 2 URL (Croissant):</label>
+                    <input type="text" id="sticker-2-input" class="w-full px-3 py-1.5 rounded-xl border border-bakery-pink bg-bakery-cream" value="https://api.iconify.design/fluent-emoji-flat:croissant.svg">
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Sticker 3 URL (Tea Cup):</label>
+                    <input type="text" id="sticker-3-input" class="w-full px-3 py-1.5 rounded-xl border border-bakery-pink bg-bakery-cream" value="https://api.iconify.design/fluent-emoji-flat:teacup-without-handle.svg">
+                </div>
+            </div>
+
+            <div class="mt-5 flex justify-end gap-2">
+                <button onclick="applyCustomStickers()" class="bg-bakery-darkbrown text-white text-xs px-4 py-2 rounded-xl">Save Stickers</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- STUDY PREVIEW MODAL -->
+    <div id="preview-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white max-w-lg w-full rounded-3xl p-6 border-4 border-bakery-pink shadow-2xl relative">
+            <button onclick="closePreviewModal()" class="absolute top-4 right-4 w-8 h-8 bg-bakery-pink rounded-full flex items-center justify-center text-bakery-darkbrown">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 id="preview-modal-title" class="font-serif text-2xl text-bakery-darkbrown mb-2">Study Guide Preview</h3>
+            <div id="preview-modal-content" class="bg-bakery-cream p-4 rounded-2xl border border-bakery-pink text-xs space-y-2 text-bakery-darkbrown max-h-80 overflow-y-auto font-sans">
+                <!-- Dynamic Content -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="mt-12 bg-bakery-pink/30 border-t-2 border-bakery-pink py-8 text-center relative z-10">
+        <div class="max-w-4xl mx-auto px-4 space-y-3">
+            <div class="font-momo text-3xl text-bakery-darkbrown">Ania's Language Bakery</div>
+            <p class="font-grace text-sm text-bakery-brown">Baked with love and sugar 🥐✨</p>
+            <p class="text-xs text-bakery-darkbrown/60">© 2026 Ania's Language Bakery. All rights reserved. Designed for joyful language friends.</p>
+        </div>
+    </footer>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATA STRUCTURE FOR LANGUAGES
+        const languageData = {
+            thai: {
+                flag: '🇹🇭',
+                title: 'Thai Bakery',
+                description: 'Bake sweet Thai conversation skills! Learn tonal vocabulary, download writing sheets, and find top Thai apps.',
+                vocab: [
+                    { eng: 'Hello / Goodbye', rom: 'Sawasdee (krap/kah)', target: 'สวัสดี', category: 'Greetings' },
+                    { eng: 'Thank you', rom: 'Khob khun (krap/kah)', target: 'ขอบคุณ', category: 'Greetings' },
+                    { eng: 'Delicious', rom: 'Aroy', target: 'อร่อย', category: 'Food & Desserts' },
+                    { eng: 'Water', rom: 'Nam', target: 'น้ำ', category: 'Food & Desserts' },
+                    { eng: 'How much is this?', rom: 'Tao rai?', target: 'เท่าไหร่?', category: 'Common Phrases' },
+                    { eng: 'Sweet / Cake', rom: 'Khanom', target: 'ขนม', category: 'Desserts' }
+                ],
+                pdfs: [
+                    { title: 'Thai Alphabet Cheat Sheet', desc: 'Consonants & Vowel charts', size: '1.2 MB' },
+                    { title: 'Thai Tones Quick Rules', desc: 'Tone rules breakdown table', size: '850 KB' }
+                ],
+                apps: [
+                    { name: 'LingoDeer', icon: '🦌', desc: 'Structured Asian language lessons.', link: 'https://www.lingodeer.com' },
+                    { name: 'ThaiPod101', icon: '🎧', desc: 'Audio & video podcast lessons.', link: 'https://www.thaipod101.com' },
+                    { name: 'Pocket Thai Master', icon: '📱', desc: 'Grammar & tone drill app.', link: 'https://play.google.com' }
+                ],
+                links: [
+                    { name: 'Thai-Language.com Dictionary', url: 'http://www.thai-language.com' },
+                    { name: 'SEAlang Thai Dictionary', url: 'http://sealang.net/thai/' }
+                ]
+            },
+            chinese: {
+                flag: '🇨🇳',
+                title: 'Chinese Bakery',
+                description: 'Bake tasty Mandarin vocabulary! Master characters, pinyin romanization, and sweet phrases.',
+                vocab: [
+                    { eng: 'Hello', rom: 'Nǐ hǎo', target: '你好', category: 'Greetings' },
+                    { eng: 'Thank you', rom: 'Xièxie', target: '谢谢', category: 'Greetings' },
+                    { eng: 'Bread', rom: 'Miànbāo', target: '面包', category: 'Food & Desserts' },
+                    { eng: 'Tea', rom: 'Chá', target: '茶', category: 'Food & Desserts' },
+                    { eng: 'I love bakery treats', rom: 'Wǒ xǐhuān tiándiǎn', target: '我喜欢甜点', category: 'Common Phrases' },
+                    { eng: 'Bubble Tea', rom: 'Zhēnzhū nǎichá', target: '珍珠奶茶', category: 'Desserts' }
+                ],
+                pdfs: [
+                    { title: 'HSK 1 Essential Vocab List', desc: 'Top 150 words with Pinyin', size: '2.1 MB' },
+                    { title: 'Radicals Writing Grid', desc: 'Printable stroke practice', size: '1.5 MB' }
+                ],
+                apps: [
+                    { name: 'Pleco Dictionary', icon: '📖', desc: 'Must-have dictionary & stroke order.', link: 'https://www.pleco.com' },
+                    { name: 'HelloChinese', icon: '🐼', desc: 'Fun game-like Mandarin learning.', link: 'https://www.hellochinese.cc' },
+                    { name: 'AnkiDroid Flashcards', icon: '🎴', desc: 'Spaced repetition flashcards.', link: 'https://apps.ankiweb.net' }
+                ],
+                links: [
+                    { name: 'MDBG Chinese Dictionary', url: 'https://www.mdbg.net' },
+                    { name: 'ChinesePod', url: 'https://chinesepod.com' }
+                ]
+            },
+            japanese: {
+                flag: '🇯🇵',
+                title: 'Japanese Bakery',
+                description: 'Sweet Hiragana, Katakana, and Japanese phrases cooked to perfection!',
+                vocab: [
+                    { eng: 'Hello', rom: 'Konnichiwa', target: 'こんにちは', category: 'Greetings' },
+                    { eng: 'Thank you', rom: 'Arigatō gozaimasu', target: 'ありがとうございます', category: 'Greetings' },
+                    { eng: 'Cake', rom: 'Kēki', target: 'ケーキ', category: 'Desserts' },
+                    { eng: 'Matcha Tea', rom: 'Matcha', target: '抹茶', category: 'Food & Desserts' },
+                    { eng: 'Excuse me', rom: 'Sumimasen', target: 'すみません', category: 'Common Phrases' },
+                    { eng: 'Cute', rom: 'Kawaii', target: 'かわいい', category: 'Common Phrases' }
+                ],
+                pdfs: [
+                    { title: 'Hiragana & Katakana Worksheets', desc: 'Stroke order tracing sheets', size: '3.0 MB' },
+                    { title: 'N5 Grammar Bakery Guide', desc: 'Beginner particle summary', size: '1.8 MB' }
+                ],
+                apps: [
+                    { name: 'Renshuu', icon: '🐉', desc: 'Japanese learning made playful.', link: 'https://www.renshuu.org' },
+                    { name: 'Shirabe Jisho', icon: '🎏', desc: 'iOS Japanese offline dictionary.', link: 'https://apple.com' },
+                    { name: 'Bunpro', icon: '🌸', desc: 'SRS Grammar practice tool.', link: 'https://bunpro.jp' }
+                ],
+                links: [
+                    { name: 'Jisho.org Dictionary', url: 'https://jisho.org' },
+                    { name: 'Tofugu Japanese Blog', url: 'https://www.tofugu.com' }
+                ]
+            },
+            korean: {
+                flag: '🇰🇷',
+                title: 'Korean Bakery',
+                description: 'Freshly baked Hangul notes, sweet Korean phrases, and learning tools.',
+                vocab: [
+                    { eng: 'Hello', rom: 'Annyeonghaseyo', target: '안녕하세요', category: 'Greetings' },
+                    { eng: 'Thank you', rom: 'Gamsahamdida', target: '감사합니다', category: 'Greetings' },
+                    { eng: 'Bread / Bakery item', rom: 'Pbang', target: '빵', category: 'Desserts' },
+                    { eng: 'Coffee', rom: 'Keopi', target: '커피', category: 'Food & Desserts' },
+                    { eng: 'It is delicious', rom: 'Masiss-eoyo', target: '맛있어요', category: 'Common Phrases' },
+                    { eng: 'Please give me this', rom: 'Igeo juseyo', target: '이거 주세요', category: 'Common Phrases' }
+                ],
+                pdfs: [
+                    { title: 'Hangul Alphabet Mastery Guide', desc: 'Consonants & vowels chart', size: '1.4 MB' },
+                    { title: 'K-Drama Phrasebook', desc: 'Cute everyday dialogue notes', size: '2.2 MB' }
+                ],
+                apps: [
+                    { name: 'Naver Dictionary', icon: '🟢', desc: 'Official Korean dictionary app.', link: 'https://dict.naver.com' },
+                    { name: 'Talk To Me In Korean', icon: '🎙️', desc: 'World famous podcast lessons.', link: 'https://talktomeinkorean.com' },
+                    { name: 'Eggbun Korean', icon: '🥚', desc: 'Tutor chat learning experience.', link: 'https://eggbun-edu.com' }
+                ],
+                links: [
+                    { name: 'How to Study Korean', url: 'https://www.howtostudykorean.com' },
+                    { name: 'Mirinae Korean Grammar', url: 'https://mirinae.io' }
+                ]
+            },
+            tagalog: {
+                flag: '🇵🇭',
+                title: 'Tagalog Bakery',
+                description: 'Warm Filipino greetings, sweet dessert vocabulary, and grammar quick-starts!',
+                vocab: [
+                    { eng: 'Hello / How are you?', rom: 'Kumusta', target: 'Kumusta', category: 'Greetings' },
+                    { eng: 'Thank you', rom: 'Salamat', target: 'Salamat', category: 'Greetings' },
+                    { eng: 'Delicious', rom: 'Masarap', target: 'Masarap', category: 'Food & Desserts' },
+                    { eng: 'Bread', rom: 'Tinapay', target: 'Tinapay', category: 'Food & Desserts' },
+                    { eng: 'Good morning', rom: 'Magandang umaga', target: 'Magandang umaga', category: 'Greetings' },
+                    { eng: 'Sweet treat', rom: 'Matamis', target: 'Matamis', category: 'Desserts' }
+                ],
+                pdfs: [
+                    { title: 'Tagalog Grammar Essentials', desc: 'Verb affixes & pronoun cheat sheet', size: '1.1 MB' },
+                    { title: 'Filipino Food & Bakery Vocab', desc: 'Phrases for ordering food', size: '900 KB' }
+                ],
+                apps: [
+                    { name: 'Drops Tagalog', icon: '💧', desc: '5-minute visual vocabulary builder.', link: 'https://languagedrops.com' },
+                    { name: 'Tagalog.com App', icon: '🇵🇭', desc: 'Dictionary & example sentences.', link: 'https://www.tagalog.com' },
+                    { name: 'Ling App', icon: '🐵', desc: 'Interactive Tagalog lessons.', link: 'https://ling-app.com' }
+                ],
+                links: [
+                    { name: 'Tagalog.com Dictionary', url: 'https://www.tagalog.com' },
+                    { name: 'FilipinoPod101', url: 'https://www.filipinopod101.com' }
+                ]
+            }
+        };
+
+        let currentLangKey = 'thai';
+
+        // TAB NAVIGATION LOGIC
+        function switchTab(tabId) {
+            // Update nav button states
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-bakery-pink', 'shadow-sm');
+            });
+
+            // Hide all tab sections
+            document.querySelectorAll('.tab-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            if (languageData[tabId]) {
+                // Active sub-page is a language
+                currentLangKey = tabId;
+                renderLanguagePage(tabId);
+                document.getElementById('tab-language-container').classList.remove('hidden');
+                document.getElementById(`nav-${tabId}`).classList.add('bg-bakery-pink', 'shadow-sm');
+            } else if (tabId === 'guides') {
+                document.getElementById('tab-guides').classList.remove('hidden');
+                document.getElementById('nav-guides').classList.add('bg-bakery-pink', 'shadow-sm');
+            } else {
+                document.getElementById('tab-home').classList.remove('hidden');
+                document.getElementById('nav-home').classList.add('bg-bakery-pink', 'shadow-sm');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // RENDER LANGUAGE SUB-PAGE CONTENT
+        function renderLanguagePage(langKey) {
+            const data = languageData[langKey];
+            if (!data) return;
+
+            document.getElementById('lang-flag-badge').innerText = data.flag;
+            document.getElementById('lang-title').innerText = data.title;
+            document.getElementById('lang-description').innerText = data.description;
+            document.getElementById('vocab-search').value = '';
+
+            // Render Vocabulary Cards
+            renderVocabCards(data.vocab);
+
+            // Render PDFs
+            const pdfContainer = document.getElementById('pdf-list-grid');
+            pdfContainer.innerHTML = data.pdfs.map(pdf => `
+                <div class="bg-white p-4 rounded-2xl border border-bakery-pink hover:border-bakery-brown transition shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full font-bold">PDF Guide</span>
+                            <span class="text-[10px] text-bakery-brown">${pdf.size}</span>
+                        </div>
+                        <h5 class="font-serif text-lg text-bakery-darkbrown">${pdf.title}</h5>
+                        <p class="text-xs text-bakery-darkbrown/70 mt-1">${pdf.desc}</p>
+                    </div>
+                    <div class="mt-4 flex gap-2">
+                        <button onclick="triggerDownload('${pdf.title}')" class="flex-1 bg-bakery-pink hover:bg-bakery-rose text-bakery-darkbrown py-1.5 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-download"></i> Download
+                        </button>
+                        <button onclick="openPreview('${pdf.title}', '${pdf.desc}')" class="bg-bakery-yellow hover:bg-yellow-200 text-bakery-darkbrown px-2.5 py-1.5 rounded-xl text-xs transition" title="Preview">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Apps
+            const appsContainer = document.getElementById('apps-list-grid');
+            appsContainer.innerHTML = data.apps.map(app => `
+                <div class="bg-white p-4 rounded-2xl border border-bakery-pink hover:border-bakery-brown transition shadow-sm flex items-start gap-3">
+                    <div class="text-3xl p-2 bg-bakery-cream rounded-xl border border-bakery-pink">${app.icon}</div>
+                    <div class="flex-1">
+                        <h5 class="font-bold text-sm text-bakery-darkbrown">${app.name}</h5>
+                        <p class="text-xs text-bakery-darkbrown/70 mt-0.5">${app.desc}</p>
+                        <a href="${app.link}" target="_blank" class="inline-flex items-center gap-1 text-[11px] text-pink-600 font-semibold mt-2 hover:underline">
+                            Open App <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Links
+            const linksContainer = document.getElementById('links-list-grid');
+            linksContainer.innerHTML = data.links.map(link => `
+                <a href="${link.url}" target="_blank" class="bg-white px-4 py-2 rounded-2xl border border-bakery-pink hover:bg-bakery-yellow/30 text-xs text-bakery-darkbrown font-medium transition inline-flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-link text-bakery-brown"></i>
+                    <span>${link.name}</span>
+                </a>
+            `).join('');
+        }
+
+        // RENDER VOCABULARY CARDS
+        function renderVocabCards(vocabArray) {
+            const container = document.getElementById('vocab-cards-grid');
+            if (vocabArray.length === 0) {
+                container.innerHTML = `<div class="col-span-2 text-center text-bakery-brown py-8 text-sm">No vocabulary found matching your search.</div>`;
+                return;
+            }
+
+            container.innerHTML = vocabArray.map(v => `
+                <div class="notebook-grid p-4 rounded-2xl border-2 border-bakery-pink/70 shadow-sm relative hover:border-bakery-brown transition">
+                    <div class="flex items-center justify-between border-b border-bakery-pink/40 pb-2 mb-2">
+                        <span class="font-serif text-lg font-bold text-bakery-darkbrown">${v.eng}</span>
+                        <span class="text-[10px] bg-bakery-yellow px-2 py-0.5 rounded-full text-bakery-darkbrown font-grace">${v.category}</span>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-2xl font-semibold text-pink-600 font-sans tracking-wide">${v.target}</div>
+                        <div class="text-xs text-bakery-brown font-mono">${v.rom}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // VOCABULARY SEARCH FILTER
+        function filterVocab() {
+            const query = document.getElementById('vocab-search').value.toLowerCase();
+            const allVocab = languageData[currentLangKey]?.vocab || [];
+            const filtered = allVocab.filter(v => 
+                v.eng.toLowerCase().includes(query) ||
+                v.rom.toLowerCase().includes(query) ||
+                v.target.toLowerCase().includes(query)
+            );
+            renderVocabCards(filtered);
+        }
+
+        // MODAL TOGGLES
+        function openVoucherModal() {
+            const modal = document.getElementById('voucher-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+        function closeVoucherModal() {
+            const modal = document.getElementById('voucher-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function toggleStickerModal() {
+            const modal = document.getElementById('sticker-modal');
+            modal.classList.toggle('opacity-0');
+            modal.classList.toggle('pointer-events-none');
+        }
+
+        function toggleStickersVisibility() {
+            const container = document.getElementById('stickers-container');
+            container.classList.toggle('hidden');
+        }
+
+        function applyCustomStickers() {
+            const s1 = document.getElementById('sticker-1-input').value;
+            const s2 = document.getElementById('sticker-2-input').value;
+            const s3 = document.getElementById('sticker-3-input').value;
+
+            if (s1) document.getElementById('sticker-1').src = s1;
+            if (s2) document.getElementById('sticker-2').src = s2;
+            if (s3) document.getElementById('sticker-3').src = s3;
+
+            toggleStickerModal();
+        }
+
+        function triggerDownload(title) {
+            alert(`🧁 Downloader Ready!\nStarting download for "${title}". (In a production environment, this links directly to your hosted PDF file).`);
+        }
+
+        function openPreview(title, desc) {
+            document.getElementById('preview-modal-title').innerText = title;
+            document.getElementById('preview-modal-content').innerHTML = `
+                <p><strong>Description:</strong> ${desc}</p>
+                <div class="p-3 bg-white rounded-xl border border-bakery-pink mt-2">
+                    <p class="font-serif text-sm font-bold text-bakery-darkbrown mb-1">Study Preview Snippet:</p>
+                    <p>• Clean handwriting lines for daily stroke practice.<br>• Tone marker color charts.<br>• Essential phrases organized by coffee shop & bakery context.</p>
+                </div>
+            `;
+            const modal = document.getElementById('preview-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closePreviewModal() {
+            const modal = document.getElementById('preview-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // ACCORDION TOGGLE FOR GUIDES
+        function toggleGuide(id) {
+            const body = document.getElementById(`${id}-body`);
+            const icon = document.getElementById(`${id}-icon`);
+            if (body.classList.contains('hidden')) {
+                body.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                body.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
